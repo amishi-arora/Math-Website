@@ -1,0 +1,55 @@
+
+
+#title{
+    color: #000000;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Lato', sans-serif;
+    text-decoration: underline;
+}
+
+ #subtitle{
+ text-align: center;
+ font-family: 'Oswald', cursive;
+ }
+
+body{
+    background-color: #D1EDC0;
+}
+
+#buttons{
+ display: inline;
+ margin-left: 70px;
+}
+
+#center{
+  margin: auto;
+  width: 60%;
+  border: 5px solid #FFFF00;
+  padding: 10px;
+}
+
+#plus{
+    position: relative;
+    top: -100px;
+}
+
+#minus{
+    position: relative;
+    top: -168px;
+    left: 100px;
+}
+
+#divide{
+    position: relative;
+    top: -30px;
+    left: 65px;
+}
+
+#multiply{
+    position: relative;
+    left: 107px;
+    top: -5px;
+}
+
+
