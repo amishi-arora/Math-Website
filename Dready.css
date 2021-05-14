@@ -1,0 +1,145 @@
+body {
+    background-color: #D1EDC0;
+}
+
+
+.backButton {
+    position: relative;
+    bottom: -2.2rem;
+    right: -1rem;
+    font-size: 3.5rem;
+    color: black;
+    text-decoration: none;
+}
+.backButton:hover {
+    color: #55a523;
+}
+
+.flexbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.n {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+#number {
+    margin: 14rem;
+    font-size: 5rem;
+    color: #ff0000;
+}
+
+#secondNumber {
+    color: black;
+    font-size: 6rem;
+    margin: -1rem;
+}
+
+
+
+#question {
+    display: flex;
+    justify-content: center;
+    margin: 10rem;
+    font-size: 5rem;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+}
+
+#checkFlex {
+    display: flex;
+    justify-content: center;
+}
+
+#exFlex {
+    display: flex;
+    justify-content: center;
+}
+
+.q {
+    margin-right: 0.8rem;
+    margin-left: 0.8rem;
+}
+
+
+#ans {
+    font-size: 4rem;
+    font-family: 'Lato', sans-serif;
+    width: 130px;
+}
+
+
+
+ul {
+    list-style-type: none;
+    font-size: 2rem;
+    padding: 0;
+}
+
+
+    
+#lists {
+    font-family: 'Lato', sans-serif;
+    display:flex;
+    margin-top: 5rem;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#endquoteflex {
+    font-family: 'Lato', sans-serif;
+    display:flex;
+    justify-content: center; 
+}
+
+#againButtonFlex {
+    display:flex;
+    justify-content: center; 
+}
+
+#againButton {
+    font-family: 'Lato', sans-serif;
+    background-color:#e1f3d6;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 7px 14px;
+    color: #81bd5c;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+}
+
+#againButton:hover {
+    background-color: #98d373;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+ }
+
+ .democlass {
+    list-style-type: initial;
+    margin-top: 1rem;
+    margin-bottom: 0.9rem;
+ }
+
+ .democlasstwo {
+    margin-bottom: 0.9rem;
+ }
+
+ .democlassthree {
+    list-style-type: initial;
+    margin-top: 1rem;
+    margin-bottom: 0.9rem;
+ }
+
+ .democlassfive {
+    list-style-type: initial;
+     margin-top: 1rem;
+ }
+
+ .listtitle {
+    text-decoration: underline;
+ }

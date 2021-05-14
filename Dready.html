@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Math Games - Practice Addition</title>
+    <link href="Aready.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+<body id='bod'>
+    <a class=backButton href=division.html> ⬅ </a>
+    <div class=flexbox>
+        <h1 id="secondNumber" class="n">30</h1>
+
+        <h1 id=number class=n>3</h1>
+    </div>
+
+    <p id=question> <span id=numOne class=q>0</span> <span id=addSi class=q>÷</span> <span id=numTwo class=q>0</span>
+        <span class=q>=</span>
+        <input class=q id="ans" type="number">
+    </p>
+
+    <div id='checkFlex'>
+        <img id='checkmark' src="https://i.pinimg.com/originals/21/3d/c0/213dc0ed0a2e69d1978c75bfbcff903a.png"
+            alt="Check Mark" width="130" height="160">
+    </div>
+
+    <div id='exFlex'>
+        <img id='exmark' src="https://www.pngkey.com/png/full/615-6157958_x-mark-png.png" alt="Ex Mark" width="120"
+            height="140">
+    </div>
+
+    <div id='endquoteflex'>
+        <h1 id='endquote'>Congratulations! You answered <span id='ca'>0</span> questions correctly!</h1>
+    </div>
+
+    <div id='againButtonFlex'>
+        <button id='againButton'>Play Again</button>
+    </div>
+
+    <div id='lists'>
+        <ul id="myCorrectList">
+            <li class = 'listtitle'>Correct:</li>
+        </ul>
+
+
+        <ul id="myIncorrectList">
+            <li class = 'listtitle'>Incorrect:</li>
+        </ul>
+
+        <ul id="mySkippedList">
+            <li class = 'listtitle'>Skipped:</li>
+
+        </ul>
+    </div>
+    <script>
+
+        let rans = -1;
+
+        let num1 = -1;
+        let num2 = -2;
+
+
+        const mathGame = () => {
+            document.getElementById("endquote").style.display = "none";
+            document.getElementById("againButton").style.display = "none";
+            document.getElementById("lists").style.display = "none";
+            document.getElementById("question").style.display = "none";
+            document.getElementById("exmark").style.display = "none";
+            document.getElementById("checkmark").style.display = "none";
+            document.getElementById("secondNumber").style.display = "none";
+            var ans = document.getElementById("ans");
+            var number = document.getElementById("number");
+            var numOne = document.getElementById("numOne");
+            var numTwo = document.getElementById("numTwo");
+            var addSi = document.getElementById("addSi");
+            var question = document.getElementById("question");
+            var hi = document.getElementById("hi");
+            var numberEnd = "START";
+
+
+
+            var number = document.getElementById("number");
+
+            let secondCounting;
+
+
+
+            const countDown = () => {
+                const currentTime = parseFloat(number.textContent);
+                if (currentTime > 0) {
+                    if (currentTime === 1) {
+                        number.textContent = numberEnd;
+                    }
+                    else {
+                        number.textContent = currentTime - 1;
+                    }
+                }
+
+                else {
+                    window.clearInterval(counting);
+                    document.getElementById("question").style.display = "flex";
+                    ans.focus();
+                    document.getElementById("secondNumber").style.display = "initial";
+                    secondCounting = window.setInterval(secondCountDown, 1000);
+                    document.getElementById("number").style.display = "none";
+                    secondMain();
+                }
+            };
+
+            var counting = window.setInterval(countDown, 1000)
+            const secondNumber = document.getElementById("secondNumber")
+
+            const secondCountDown = () => {
+                const secondCurrentTime = parseFloat(secondNumber.textContent);
+                if (secondCurrentTime > 0) {
+                    secondNumber.textContent = secondCurrentTime - 1;
+
+                }
+                else {
+                    window.clearInterval(secondCounting);
+                    document.getElementById("secondNumber").style.display = "none";
+                    document.getElementById("question").style.display = "none";
+
+                    document.getElementById("lists").style.display = "flex";
+                    document.getElementById("endquote").style.display = "flex";
+
+                    var nodelist = document.getElementsByClassName("democlass").length;
+                    document.getElementById("ca").innerHTML = `&nbsp;${nodelist}&nbsp`;
+
+                    document.getElementById("againButton").style.display = "flex";
+                }
+            };
+
+
+
+
+            document.addEventListener("keydown", handleEnter);
+
+
+        };
+
+        const afterAnswerRight = () => {
+            document.getElementById("checkmark").style.display = "none";
+        }
+
+        const afterAnswerWrong = () => {
+            document.getElementById("exmark").style.display = "none";
+        }
+
+        const secondMain = () => {
+            num1 = Math.floor(Math.random() * 18) + 1;
+            num2 = Math.floor(Math.random() * 18) + 1;
+
+            let firstNum = num1 * num2;
+
+            numOne.textContent = firstNum;
+            numTwo.textContent = num2;
+            
+            rans = firstNum / num2;
+
+        };
+
+        const handleEnter = (e) => {
+            if (e.key === 'Enter') {
+                answerChecker(ans.value);
+                secondMain(ans.value);
+                ans.value = '';
+            }
+        }
+
+        const answerChecker = (ans) => {
+            if (ans == rans && secondNumber.textContent > 0) {
+                document.getElementById("checkmark").style.display = "flex";
+                setTimeout(afterAnswerRight, 500);
+
+                var node = document.createElement("LI")
+                node.setAttribute("class", "democlass");
+                var textnode = document.createTextNode(numOne.textContent + " ÷ " + numTwo.textContent + " = " + ans);
+                node.appendChild(textnode);
+                document.getElementById("myCorrectList").appendChild(node);
+
+            }
+
+            else if (ans != rans && ans != "" && secondNumber.textContent > 0) {
+                document.getElementById("exmark").style.display = "flex";
+                setTimeout(afterAnswerWrong, 500);
+                var twonode = document.createElement("LI")
+                twonode.setAttribute("class", "democlassfive");
+                var twotextnode = document.createTextNode(numOne.textContent + " ÷ " + numTwo.textContent + " = " + ans);
+                twonode.appendChild(twotextnode);
+                document.getElementById("myIncorrectList").appendChild(twonode);
+
+                var threenode = document.createElement("LI")
+                threenode.setAttribute("class", "democlasstwo");
+                var threetextnode = document.createTextNode("The correct answer was:" + " " + rans);
+                threenode.appendChild(threetextnode);
+                document.getElementById("myIncorrectList").appendChild(threenode);
+            }
+
+            else if (ans == "" && secondNumber.textContent > 0) {
+                var fournode = document.createElement("LI")
+                fournode.setAttribute("class", "democlassthree");
+                var fourtextnode = document.createTextNode(numOne.textContent + " ÷ " + numTwo.textContent + " = " + rans);
+                fournode.appendChild(fourtextnode);
+                document.getElementById("mySkippedList").appendChild(fournode);
+            }
+
+        };
+
+        mathGame();
+
+        const playAgain = () => {
+            document.getElementById("myCorrectList").innerHTML = "";
+
+            var fivenode = document.createElement("LI")
+            var fivetextnode = document.createTextNode("Correct:");
+            fivenode.appendChild(fivetextnode);
+            document.getElementById("myCorrectList").appendChild(fivenode);
+
+            document.getElementById("mySkippedList").innerHTML = "";
+
+            var sixnode = document.createElement("LI")
+            var sixtextnode = document.createTextNode("Skipped");
+            sixnode.appendChild(sixtextnode);
+            document.getElementById("mySkippedList").appendChild(sixnode);
+
+            document.getElementById("myIncorrectList").innerHTML = "";
+
+            var sevennode = document.createElement("LI")
+            var seventextnode = document.createTextNode("Incorrect:");
+            sevennode.appendChild(seventextnode);
+            document.getElementById("myIncorrectList").appendChild(sevennode);
+
+            document.getElementById("number").style.display = "initial";
+            number.textContent = "3";
+
+            document.getElementById("secondNumber").style.display = "initial";
+            document.getElementById("secondNumber").textContent = "30";
+
+            document.removeEventListener("keydown", handleEnter);
+
+            mathGame();
+
+            console.log(num1, num2)
+
+        };
+
+
+
+        document.getElementById("againButton").addEventListener("click", playAgain);
+        
+    </script>
+</body>
